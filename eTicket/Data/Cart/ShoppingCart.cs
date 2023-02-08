@@ -17,7 +17,7 @@ namespace eTicket.Data.Cart
             ISession session= serviceProvider.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             var context = serviceProvider.GetService<AppDbContext>();
 
-            string cartId = session.GetString("cartId") ?? Guid.NewGuid().ToString();
+            string cartId =  session.GetString("cartId") ?? Guid.NewGuid().ToString();
             session.SetString("cartId", cartId);
 
             return new ShoppingCart(context) { ShoppingCartId = cartId};

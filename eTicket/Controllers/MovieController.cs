@@ -115,5 +115,19 @@ namespace eTicket.Controllers
             await service.UpdateMovieAsync(movie);
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleteActor = await service.GetAllById(id);
+            if (deleteActor == null) return View("NotFound");
+            return View(deleteActor);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfrimed(int id)
+        {
+            var deleteActor = await service.GetAllById(id);
+            if (deleteActor == null) return View("NotFound");
+            await service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

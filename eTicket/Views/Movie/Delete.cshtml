@@ -1,0 +1,83 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Create a new movie</h4>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+               
+                    <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" readonly />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+
+                                <label asp-for="Startdate" class="control-label"></label>
+                                <input asp-for="Startdate" type="date" class="form-control" readonly />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Enddate" class="control-label"></label>
+                                <input asp-for="Enddate" type="date" class="form-control" readonly />
+                                <span asp-validation-for="Enddate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" type="number" class="form-control" readonly />
+                                <span asp-validation-for="Enddate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImageUrl" class="control-label"></label>
+                                <input asp-for="ImageUrl" class="form-control" readonly />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 offset-4">
+                        <img width="100%" id="ImagepreviewUrl" />
+                    </div>
+                   <div class="mt-4">
+                    <div class="form-group">
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for-id="id" />
+                            <input type="submit" value="confirm" class="btn btn-danger" style="float:right" />
+
+                        </form>
+
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+
+                    </div>
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#ImageUrl").on("change", function () {
+            var output = document.getElementById("#ImagepreviewUrl");
+            output.scr = $(this).val();
+        })
+    </script>
+}
